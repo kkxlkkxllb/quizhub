@@ -17,6 +17,7 @@ require("lib/jquery/bootstrap-datetimepicker.min")
 
 window.marked = require("lib/markdown/marked")
 window.hljs = require("lib/markdown/highlight.pack")
+window.async = require("lib/jquery/async")
 
 require("lib/jquery/jquery.utils")
 require("lib/md5.min")

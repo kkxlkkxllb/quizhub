@@ -7,7 +7,7 @@ class QuizItem extends Spine.Model
 	calCorrectNum: ->
 		d = $.grep @data, (e) -> e.key
 		d.length
-	checkCorrect: (answer) ->
+	checkCorrect: (answer, tigger = true) ->
 		f = 0
 		t = 0
 		for idx in answer
@@ -23,10 +23,11 @@ class QuizItem extends Spine.Model
 			when 2
 				if t is @calCorrectNum()
 					result = true
-		ext =
-			answer: answer
-			result: result
-		@trigger "append:anwser", ext
+		if tigger
+			ext =
+				answer: answer
+				result: result
+			@trigger "append:anwser", ext
 		result
 
 

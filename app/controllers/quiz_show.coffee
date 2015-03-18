@@ -12,7 +12,7 @@ class QuizShow extends Overflow
 		"click .submit": "handleSubmit"
 		"click .check_answer": "handleCheckAnswer"
 		"click .q_user a": "handleCheckUserAnswer"
-		"focus .share input": "handleSelectShareUrl"
+		"click .share input": "handleSelectShareUrl"
 		"click .get_qrcode": "handleShowQrcode"
 		"blur .confirm_score input": "confirmScore"
 		"click .choice_img img": "scaleImg"
@@ -114,16 +114,12 @@ class QuizShow extends Overflow
 		$(".q_item", @$el).removeClass "panel-success panel-danger"
 	renderAnswer: (opt = {}) ->
 		@resetAnswer()
-		u = $(".joined_users .q_user.active").data().id
 		@answerFb.once "value", (f) =>
 			$quInfo = $(".quiz_user_info",@$el)
 			c_score = f.val().score
 			$.each f.val().answerData, (k,d) =>
 				qz = QuizItem.findByAttribute("qid", k)
-				result = qz.checkCorrect d
-				@correctDict[qz.id] ?= {}
-				@correctDict[qz.id][u] = result
-				if result
+				if qz.checkCorrect d
 					@score += qz.score
 					@correct += 1
 				true
@@ -151,6 +147,8 @@ class QuizShow extends Overflow
 			@renderAnswer(opt)
 			$(".tool-bar",@$el).removeClass "hide"
 	handleSelectShareUrl: (e) ->
+		e.preventDefault()
+		e.stopPropagation()
 		$(e.currentTarget).select()
 	handleShowQrcode: (e) ->
 		$(".qrcode-modal",@$el).modal "show"
@@ -175,6 +173,26 @@ class QuizShow extends Overflow
 			view = new QuizPieceItemView(item: item, idx)
 			$(".items_container",@$el).append view.renderForAnalytics(idx + 1)
 	getAnalytics: (e) ->
-		console.log @correctDict
+		self = this
+		q = async.queue (task,cb) ->
+			task.fb.once "value", (f) ->
+				$.each f.val().answerData, (k,d) ->
+					qz = QuizItem.findByAttribute("qid", k)
+					result = qz.checkCorrect d, false
+					self.correctDict[qz.id] ?= {}
+					self.correctDict[qz.id][task.uid] = result
+					true
+				cb()
+		q.drain = ->
+			console.log self.correctDict
+		if Object.keys(@correctDict).length is 0
+			$.each $(".joined_users .q_user"), (i,el) ->
+				uid = $(el).data().id
+				answerFb = Member.currentQuizAnswerFB uid
+				q.push
+					fb: answerFb
+					uid: uid
+		else
+			console.log self.correctDict
 
 module.exports = QuizShow
