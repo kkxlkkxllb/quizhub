@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+	head
+		include _includes/header
+		//- include _includes/trace.html
+	body.loading
+		header.navbar.navbar-fixed-top.navbar-default
+		article(role="tabpanel")
+
+		.loaderlayer.overflow-layer
+			.tips.panel.panel-default
+				.panel-body
+					span 请稍候
+					i.fa.fa-refresh.fa-spin
+		.modal.pwd-required-modal
+		.modal.login-modal
+			.modal-dialog.modal-sm
+				.modal-content
+					.modal-header
+						h4.modal-title QuizHub 用户登录
+					.modal-body
+						form.login-form(action= "#"  role="presentation")
+							.form-group
+								input.form-control(required="required" name="email" type="email" placeholder="邮箱 Email")
+							.form-group
+								input.form-control(required="required" name="password" type="password" placeholder="密码 Password")
+							.form-group
+								button.btn.btn-block.btn-primary(type="submit") 登录
+							| 还没有注册？
+							a.link_register(href="#") 立即注册新用户
+		.modal.register-modal
+			.modal-dialog.modal-sm
+				.modal-content
+					.modal-header
+						h4.modal-title QuizHub 新用户注册
+					.modal-body
+						form.login-form(action= "#"  role="presentation")
+							.form-group
+								input.form-control(required="required" name="name" type="text" placeholder="姓名 Name")
+							.form-group
+								input.form-control(required="required" name="email" type="email" placeholder="邮箱 Email")
+							.form-group
+								input.form-control(required="required" name="password" type="password" placeholder="密码 Password")
+							.form-group
+								button.btn.btn-block.btn-primary(type="submit") 注册
+							| 已有账号？
+							a.link_login(href="#") 立即登录
+
+		input#pic_uploader(accept="image/png,image/gif,image/jpeg" data-url= "http://api.17up.org/api/images" name="file" type="file" multiple)
+		#flash_message
+

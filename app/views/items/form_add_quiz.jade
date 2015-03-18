@@ -1,0 +1,67 @@
+.panel-body.edit-qz-form
+	.form-group.set_score
+		label
+			| 本题分值设定:
+			span.desc.s_val= score || 1
+		input.score.form-control(type="range" min="1" max="10" value=score || "1" step="1" tabindex=-1)
+	.form-group.set_content
+		label.control-label 问题描述
+		textarea.form-control.no-h-resize(rows="3" placeholder="请填写问题内容" required="required")
+			= content
+	.senior_editor.form-group
+		include ./senior_editor
+	.attach_file.form-group
+		include ./img_attach
+
+	.btn-group.btn-group-justified.form-group.set_cate(data-toggle="buttons")
+		label.btn.btn-default.active
+			input(type="radio" name="category" value= 1)
+			i.fa.fa-dot-circle-o
+			span.desc 单选题
+		label.btn.btn-default
+			input(type="radio" name="category" value= 2)
+			i.fa.fa-check-square-o
+			span.desc 多选题
+
+	.q_container.form-group
+		.qc(data-id=1)
+			form.single_choice(action="#")
+				if data
+					for d in data
+						include ./qc_item
+				else
+					each i in [1,2,3,4]
+						include ./qc_item
+			.btns.form-group
+				span.btn.btn-default.add.btn-sm
+					i.fa.fa-plus
+					span.desc 更多
+		.qc.hide(data-id=2)
+			form.multi_choice(action="#")
+				- var ctype = "checkbox"
+				if data
+					for d in data
+						include ./qc_item
+				else
+					each i in [1,2,3,4]
+						include ./qc_item
+			.btns.form-group
+				span.btn.btn-default.add.btn-sm
+					i.fa.fa-plus
+					span.desc 更多
+	.options.form-group(data-toggle="buttons")
+		label.btn.btn-default.btn-block
+			input(type="checkbox" name="mass")
+			| 是否打乱选项顺序
+	.btns
+		if qid
+			span.btn.btn-success.confirm.btn-sm.btn-block(data-qid= qid)
+				i.fa.fa-check
+				span.desc 更新
+			span.btn.btn-warning.cancel.btn-sm.btn-block
+				i.fa.fa-times
+				span.desc 取消
+		else
+			span.btn.btn-primary.confirm.btn-sm.btn-block
+				i.fa.fa-check
+				span.desc 提交

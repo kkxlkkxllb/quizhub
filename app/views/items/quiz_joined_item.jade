@@ -1,0 +1,14 @@
+.quiz_item.col-sm-4
+	a(href="#/" + item.teacher + "/" + item.id)
+		.panel.panel-default
+			.panel-body
+				.title= item.title
+				if item.score
+					span.label.label-primary= item.score
+				else
+					span.label.label-default 未评定成绩
+			- var cls = item.timeout ? ["text-danger"] : ["text-muted"]
+			.panel-footer(class = cls)
+				i.fa.fa-clock-o(title = "交卷时间")
+				span.desc= item.submit_at
+

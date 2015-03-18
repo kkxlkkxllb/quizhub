@@ -1,0 +1,30 @@
+{
+	"globals": {
+		"title": "在线上课首选平台-e板书",
+		"description": "e板书提供高质量的精选课程和学习资料,建立名师与学生之间实时教育模式,是您实现高效学习,从事在线教育的首选平台-e板书 ebanshu.com",
+		"keywords": "e板书,在线教育,互动教学,高效分享,文档转换,语音畅聊,在线板书,e板书,电子黑板，电子白板，在线黑板/白板，同步黑板/白板/画板",
+		"logo_img": "./assets/images/logo.jpg",
+		"footer": {
+			"text": "© eBanshu 2014 版权所有　深圳宸睿科技有限公司 粤ICP备14001104号"
+		},
+		"social": {
+			"weibo": "http://weibo.com/ebanshu"
+		},
+		"help": {
+			"questions": [
+				{
+					"qt": "1、为什么我不能正常访问教室？",
+					"qa": "<p>可能是您的浏览器版本问题，请点击 ​<a href='http://www.ebanshu.com/test/' target='_blank'>http://www.ebanshu.com/test/</a> 进行测试。如您未通过浏览器测试，请点击​ <a href='http://www.ebanshu.com/unsupport/' target='_blank'>http://www.ebanshu.com/unsupport/</a> ，下载并升级浏览器。</p>"
+				},
+				{
+					"qt": "2、为什么停留在“系统正在加载”却无法进入教室？",
+					"qa": "通常是网络异常所导致，请刷新页面重试。"
+				},
+				{
+					"qt": "3、为什么我不能听见老师的声音？",
+					"qa": "如在上课时间（e板书精品课堂于非上课时间保持静音状态）不能听到老师的声音，可能是由以下原因所致：<br>1. 网络异常。请刷新页面重试。<br>2. 语音输入设备的问题。请确认您的电脑已经打开声音，并检查音箱（或耳机）是否与电脑正常连接。<br>3. 语音设置有误。请刷新页面，在弹出的“语音控制”对话框中，勾选 “允许” www.ebanshu.com使用您的网络摄像机和麦克风，完成语音设置。<br>4. 如果您的浏览器没有安装Flash播放器，请 <a href='http://get.adobe.com/flashplayer/' target='_blank'>下载</a> 并安装，再进行上述1-3的设置。"
+				}
+			]
+		}
+	}
+}

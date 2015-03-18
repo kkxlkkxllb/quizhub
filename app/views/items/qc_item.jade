@@ -1,0 +1,15 @@
+.qc_item.form-group(data-senior= d && d.senior data-attach_data= d && d.attach_data)
+	.input-group
+		label.input-group-addon(title= "设为答案")
+			if d && d.key
+				input(type= ctype || "radio" name="key" checked)
+			else
+				input(type= ctype || "radio" name="key")
+		textarea.form-control.no-h-resize(rows=1 name="qc_desc" placeholder="选项描述" required="required")
+			= d ? d.desc : ""
+		span.input-group-btn
+			button.btn.btn-default.more_func(type="button" title="高级功能")
+				i.fa.fa-ellipsis-v
+			button.btn.btn-default.remove(type="button" title="移除")
+				i.fa.fa-times
+

@@ -1,0 +1,18 @@
+a(href="#/" + uid + "/" + item.id)
+	.panel.panel-default
+		.panel-body
+			.title= item.title
+			.text-muted= item.subject || "未归类"
+			if item.private !== "0"
+				span.badge.private-icon
+					i.fa.fa-lock
+			span.label.label-info= item.items_size || 0
+
+		.panel-footer.text-muted
+			i.fa.fa-clock-o(title= "新建时间")
+			span.desc= item.c_at
+			.action
+				span.btn.btn-default.btn-xs.edit
+					i.fa.fa-pencil
+				span.btn.btn-danger.btn-xs.delete
+					i.fa.fa-trash-o

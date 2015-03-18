@@ -1,0 +1,39 @@
+{
+  "server": {
+    "port"  : 9295
+  },
+
+  "routes": [
+    { ""        : "./public" },
+    { "/test"    : "./test/public" }
+  ],
+
+  "packages": {
+    "equiz": {
+      "libs"    : [
+        "lib/jade_runtime.js",
+        "lib/jquery.js"
+      ],
+      "modules" : [
+          "spine",
+          "spine/lib/ajax",
+          "spine/lib/local",
+          "spine/lib/route"
+      ],
+      "paths"  : ["./app"],
+      "target" : "./public/assets/application.js",
+      "jsAfter": "jade.rethrow = function rethrow(err, filename, lineno){ throw err; } ",
+      "jsAfter": "require('index')"
+    },
+    "css": {
+      "paths"  : ["./css/lib/bootstrap.min.css","./css/lib/font-awesome.min.css","./css/lib/bootstrap-datetimepicker.min.css","./css/lib/tomorrow.css","./css"],
+      "target" : "./public/assets/application.css"
+    },
+    "test": {
+      "identifier" : "specs",
+      "jsAfter"    : "require('lib/setup'); for (var key in specs.modules) specs(key);",
+      "paths"      : ["./test/specs"],
+      "target"     : "./test/public/specs.js"
+    }
+  }
+}

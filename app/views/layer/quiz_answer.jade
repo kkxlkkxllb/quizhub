@@ -1,0 +1,33 @@
+.navbar.navbar-fixed-top.navbar-default
+	.pull-left
+		span.brand.navbar-brand 答卷
+	ul.nav.tool-bar.pull-left
+		li
+			span.label.label-default.status
+				| 正确率：
+				em.correct= 0
+				| /
+				em= items_size || 0
+		li
+			span.label.label-danger.u_score
+				| 得分：
+				em.num= 0
+				| /
+				em= all_score || 0
+
+	ul.nav.pull-right
+		li
+			a.close(href="#")
+				i.fa.fa-times
+.container.overflow-body
+	h1.title= title
+	.items_container
+		- var isTesting = true
+		- var displayAnswer = true
+		if items
+			- var num = 0
+			for item,k in items
+				- num += 1
+				.panel.panel-default.q_item(data-id = k)
+					include ../items/qz_item
+

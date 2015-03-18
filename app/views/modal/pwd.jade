@@ -1,0 +1,10 @@
+.modal-dialog.modal-sm
+	.modal-content
+		.modal-header
+			button.close(type="button" data-dismiss="modal" ) &times;
+			h4.modal-title 访问密码验证
+		.modal-body
+			form.pwd-required-form(action="#")
+				.form-group
+					input.form-control(type="text" name="pwd" required="required" placeholder="请输入该试卷的访问密码")
+				button.btn.btn-block.btn-primary(type="submit") 提交

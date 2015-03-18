@@ -1,0 +1,72 @@
+@import './mixin'
+@import './layout'
+@import './layer'
+@import url(http://fonts.googleapis.com/css?family=PT+Mono)
+
+.bads
+	font-family 'PT Mono', sans-serif
+
+span.desc
+	margin-left 8px
+span.inline
+	margin 0 5px
+
+.stack > *:not(.active)
+	display none
+
+html
+	background-color #FFF
+	height 100%
+body
+	background-color transparent
+	font-family monospace
+
+	.label
+		padding 0.3em 0.6em
+
+a
+	text-decoration none !important
+
+input[type='range']
+	-webkit-box-shadow none
+	&:focus
+		-webkit-box-shadow none
+
+.btns
+	.btn
+		margin-right 10px
+
+.navbar-toggle
+	padding 6px 10px
+
+.no-h-resize
+	resizable(vertical)
+
+.label-shadow
+	box-shadow inset 0px 1px 3px #CCC
+	background-color #fff
+	color #666
+
+@page
+	size landscape
+	margin 0
+@media print
+	html, body
+		width 297mm
+		height 210mm
+	header, .modal, article
+		display none !important
+	.page
+		width 297mm
+		background white
+		padding-top 15mm
+		border initial
+		border-radius initial
+		min-height initial
+		box-shadow initial
+		background initial
+		page-break-after always
+		img
+			width 50%
+
+

@@ -1,0 +1,83 @@
+.navbar.navbar-fixed-top.navbar-default
+	.pull-left
+		span.brand.navbar-brand 统计
+	ul.nav.tool-bar.pull-left.hide
+		li
+			span.label.label-default.status
+				| 正确率：
+				em.correct= 0
+				| /
+				em= items_size || 0
+		li
+			span.label.label-danger.u_score
+				| 得分：
+				em.num= 0
+				| /
+				em= all_score || 0
+	ul.nav.pull-right
+		li
+			a.close(href="#")
+				i.fa.fa-times
+.container.overflow-body
+	.joined_users
+		label
+			| 参与答题者
+			em.num= users ? users.length : 0
+		if users.length > 0
+			.form-group
+				span.get_analytics.btn.btn-primary.btn-block.btn-sm
+					i.fa.fa-pie-chart
+					span.desc 获取统计
+			ul.nav.bs-sidenav
+				for user in users
+					li.q_user(data-id= user.uid data-mail=user.email)
+						a(href="#")
+							= user.name
+		else
+			p.text-center.text-danger
+				| ~
+				br
+				| 尚无人参与
+				br
+				| ~
+
+	.right_main
+		h1.title= title
+		.quiz_user_info
+		.panel.basic_info.panel-info
+			.panel-heading
+				| 试卷基本信息
+				.pull-right
+					a.btn.btn-default.btn-xs(href="#/edit/" + current_qid)
+						i.fa.fa-pencil
+			.panel-body
+				.rows.clearfix
+					.col-sm-6
+						span
+							| 试题数量：
+							em= items_size || 0
+					.col-sm-6
+						span
+							| 总分值：
+							em= all_score || 0
+				.rows.clearfix
+					.col-sm-6
+						span
+							| 开始时间：
+							= start_at || "待定"
+					.col-sm-6
+						span
+							| 截止时间：
+							= end_at || "待定"
+				.share
+					.link.form-group
+						label 分享链接：
+						input.form-control(type="text" value=window.location.href)
+					.qrcode
+						span.btn.btn-default.btn-sm.get_qrcode
+							| 获取 二维码（QR Code）
+						include ../modal/qrcode
+
+		.items_container
+
+

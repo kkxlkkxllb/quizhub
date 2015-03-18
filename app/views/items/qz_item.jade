@@ -1,0 +1,37 @@
+.panel-heading
+	if num
+		= num + "、"
+	case item.type
+		when 1
+			i.fa.fa-dot-circle-o
+			span.desc 单项选择
+		when 2
+			i.fa.fa-check-square-o
+			span.desc 多项选择
+	= " ~ " + item.score + "分"
+	if !isTesting
+		.pull-right
+			span.q_edit.btn.btn-default.btn-xs
+				i.fa.fa-pencil
+			span.q_remove.btn.btn-danger.btn-xs
+				i.fa.fa-times
+
+.panel-body
+	- var cls = item.senior ? (item.senior === 1 ? ["aslatex"] : ["asmd"]) : [""]
+	.q_item_content.well.well-sm(class = cls)= item.content
+	if item.attach_data
+		.attach_preview.text-center.form-group
+			img.img-thumbnail(src= item.attach_data.url)
+	.list-group(data-type= item.type data-score= item.score)
+		- var choices = item.mass&&$shuffle ? $shuffle(item.data) : item.data
+		for choice in choices
+			- var cls = choice.senior ? (choice.senior === 1 ? ["aslatex"] : ["asmd"]) : [""]
+			if displayAnswer && choice.key
+				- cls.push("list-group-item-success")
+			.choice_item.list-group-item(data-idx= choice.idx class = cls)
+				if choice.attach_data
+					.choice_img.text-center
+						img.img-thumbnail(src= choice.attach_data.url)
+					.text-center= choice.desc
+				else
+					= choice.desc

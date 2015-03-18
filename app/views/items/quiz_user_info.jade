@@ -1,0 +1,27 @@
+.panel.panel-primary
+	.panel-heading 答题者信息
+	.panel-body
+		.rows.clearfix
+			.col-sm-6
+				span
+					| 姓名：
+					= name
+			.col-sm-6
+				| 邮箱：
+				a(href="mailto:" + email target="blank")
+					= email
+		.rows.clearfix
+			.col-sm-6
+				span
+					| 交卷时间：
+					= submit_at
+			.col-sm-6
+				if timeout
+					span.label.label-danger 超时交卷
+				else
+					span.label.label-default 准时交卷
+		.confirm_score
+			label 核定分数
+			input.form-control(type="text" value= score)
+		.remove
+			span.btn.btn-block.btn-warning.btn-sm 移除答卷使重新答题

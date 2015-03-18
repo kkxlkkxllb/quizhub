@@ -1,0 +1,56 @@
+.navbar.navbar-fixed-top.navbar-default
+	.pull-left
+		span.brand.navbar-brand 试卷
+	ul.nav.tool-bar.pull-left
+		if valid
+			li
+				span.label.label-default.status
+					| 答题情况：
+					em= items_size || 0
+					| /
+					em.answered= 0
+	ul.nav.pull-right
+		li
+
+.container.overflow-body
+	h1.title= title
+	unless valid
+		.well.well-sm.text-center.text-danger
+			| 抱歉！当前不允许答题！
+	.panel.basic_info.panel-info
+		.panel-heading 试卷基本信息
+		.panel-body
+			.rows.clearfix
+				.col-sm-6
+					span
+						| 试题数量：
+						em= items_size || 0
+				.col-sm-6
+					span
+						| 总分值：
+						em= all_score || 0
+			.rows.clearfix
+				.col-sm-6
+					span
+						| 开始时间：
+						= start_at || "待定"
+				.col-sm-6
+					span
+						| 截止时间：
+						= end_at || "待定"
+	.items_container
+		- var isTesting = true
+		if items
+			- var num = 0
+			for item,k in items
+				- num += 1
+				.panel.panel-default.q_item(data-id = k)
+					include ../items/qz_item
+		if valid && items_size > 0
+			.form-group
+				span.btn.btn-primary.btn-block.submit.disabled
+					| 提交试卷
+			.form-group.hide
+				span.btn.btn-default.btn-block.check_answer
+					| 查看答案
+

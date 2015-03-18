@@ -1,0 +1,17 @@
+.btn-group.btn-group-justified.form-group(data-toggle="buttons")
+	label.btn.btn-default
+		input(type="checkbox" name="latex" data-value=1)
+		| 启用 LaTeX 公式编辑
+	label.btn.btn-default
+		input(type="checkbox" name="md" data-value=2)
+		| 启用 Markdown 编辑
+.md_preview.hide
+	.panel.panel-default
+		.qz_preview_content.panel-body markdown 预览
+.latex_preview.hide
+	.hint.well.well-sm.text-warning
+		i.fa.fa-lightbulb-o
+		span.desc wrap TeX in $ or $$ delimiters, and ASCIImath in ` delimiters
+	.panel.panel-default
+		.qz_preview_content.panel-body LaTeX 预览
+		.qz_buffer_content.panel-body(style="visibility: hidden;position: absolute;top: 0;left: 0")

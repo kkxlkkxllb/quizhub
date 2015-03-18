@@ -1,0 +1,18 @@
+.modal-dialog
+	.modal-content
+		.modal-header
+			button.close(type="button" data-dismiss="modal" ) &times;
+			h4.modal-title 高级选项编辑功能
+		.modal-body.edit-qz-form
+			.form-group.set_content
+				label.control-label 选项描述
+				textarea.form-control.no-h-resize(rows="3" placeholder="请填写选项描述内容" required="required")
+					= desc
+			.senior_editor.form-group
+				include ../items/senior_editor
+			.attach_file.form-group
+				include ../items/img_attach
+		.modal-footer
+			span.submit.btn.btn-primary.btn-block.btn-sm
+				i.fa.fa-check
+				span.desc 完成

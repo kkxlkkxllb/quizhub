@@ -1,0 +1,18 @@
+if attach_data
+	.rows.clearfix
+		.col-xs-6
+			span.btn.btn-default.btn-block.attach_btn
+				i.fa.fa-refresh
+				span.desc 更新图片附件
+				input(accept="image/png,image/jpeg" type="file" name="file" multiple)
+		.col-xs-6
+			span.btn.btn-warning.btn-block.remove_image.form-group
+				i.fa.fa-times
+				span.desc 移除图片附件
+	.attach_preview.text-center
+		img.img-thumbnail(src= attach_data.url data-id=attach_data.id)
+else
+	span.btn.btn-default.btn-block.attach_btn
+		i.fa.fa-picture-o
+		span.desc 添加图片附件
+		input(accept="image/png,image/jpeg" type="file" name="file" multiple)

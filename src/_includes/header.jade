@@ -1,0 +1,19 @@
+include ../mixins/header_helper
+
+meta(charset="utf-8")
+meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
++meta_tag("viewport","width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no")
++meta_tag("apple-mobile-web-app-capable","yes")
++meta_tag("apple-mobile-web-app-status-bar-style","black-translucent")
+//if lt IE 9
+	script(src= "./assets/html5.js")
+title QuizHub
+
++stylesheet_link_tag("./assets/application.css")
++javascript_include_tag("https://cdn.firebase.com/js/client/2.2.2/firebase.js")
++javascript_include_tag("./assets/js/mathjax_config.js")
++javascript_include_tag("http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML-full")
++javascript_include_tag("./assets/application.js")
+
+link(href="./favicon.ico" rel="shortcut icon")
+link(href="./favicon.png" rel="apple-touch-icon-precomposed")

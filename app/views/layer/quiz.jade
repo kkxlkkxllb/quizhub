@@ -1,0 +1,70 @@
+- var cls = title ? [] : ["hide"]
+.navbar.navbar-fixed-top.navbar-default
+	.pull-left
+		span.brand.navbar-brand
+			if title
+				| 编辑试卷
+			else
+				| 新建试卷
+	ul.nav.tool-bar.pull-left(class= cls)
+		li
+			span.btn.btn-default.new 新建一题
+		li
+			span.label.label-default.count
+				| 试题数量：
+				em= items_size || 0
+		li
+			span.label.label-default.score
+				| 总分值：
+				em= all_score || 0
+
+	ul.nav.pull-right
+		li
+			a.close.save_edit(href="#")
+				i.fa.fa-check
+.container.overflow-body
+	.panel.panel-success.basic_info
+		.panel-heading 试卷基本信息
+		.panel-body
+			form.add-quiz-form(action="#")
+				input(type="hidden" name="id" value=id)
+				.rows.clearfix
+					.col-sm-6.form-group
+						label.control-label 标题 *：
+						input.form-control(type="text" name="title" required="required" value=title)
+					.col-sm-6.form-group
+						label.control-label 科目：
+						input.form-control(type="text" name="subject" value=subject)
+				.rows.clearfix
+					.col-sm-6.form-group
+						label.control-label 开始时间 *：
+						input.form-control.datetime(type="text" name="start_at" required="required" value=start_at readonly)
+					.col-sm-6.form-group
+						label.control-label 截止时间 *：
+						input.form-control.datetime(type="text" name="end_at" required="required" value=end_at readonly)
+				.rows.clearfix
+					.col-sm-6.form-group
+						label.control-label 访问权限 *：
+						.btn-group.category.btn-group-justified(data-toggle="buttons")
+							label.btn.btn-default.active
+								input(type="radio" name="private" value= '0' checked)
+								i.fa.fa-unlock
+								span.desc 公开
+							label.btn.btn-default
+								input(type="radio" name="private" value= '1')
+								i.fa.fa-lock
+								span.desc 私有
+					.set_pwd.col-sm-6.form-group.hide
+						label.control-label 密码 *：
+						input.form-control(type="text" name="pwd" required="required" value=pwd)
+				.text-center.col-sm-12
+					span.submit.btn.btn-primary.btn-sm.btn-block
+						if title
+							| 更新
+						else
+							| 提交
+	.items_container
+	.new_form.panel.panel-primary(data-id= id class= cls)
+		include ../items/new_form
+	.modal.more-func-modal(tabindex="-1" role="dialog")
+

@@ -1,0 +1,20 @@
+.container
+	.navbar-header
+		button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target=".navbar-collapse")
+			span.fa.fa-reorder
+		a.brand.navbar-brand.bads(href="/#")
+			span QuizHub
+	nav.collapse.navbar-collapse(role="navigation")
+		ul.nav.navbar-nav
+			li
+				span.label.label-shadow.name= data.name
+
+		ul.nav.navbar-nav.navbar-right
+			li
+				a(href="/#/new")
+					i.fa.fa-plus
+					span.desc 新建
+			li
+				a.checkout(href="#")
+					i.fa.fa-sign-out
+					span.desc 退出
