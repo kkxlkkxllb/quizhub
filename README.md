@@ -24,12 +24,6 @@
 
 vbg-gradient(#82c1ff,#f4ffb7)
 
-实时答题的人，参与答题的人记录
-- user_id
-- online
-- submit quiz
-- data (交卷内容及成绩)
-
 Gist
 $("#board-wrap").append require("views/items/gist")(gid: "4e2699e3ca027c9eeeb0")
 $("#board-wrap code").gist()
