@@ -19,5 +19,6 @@ build
 public/assets/application.js
 public/assets/application.css
 bower_components
-eboard
+equiz
+app/models/member.coffee
 README.md
